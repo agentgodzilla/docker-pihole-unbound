@@ -10,9 +10,8 @@ on:
       - 'pihole-unbound/**'
       - '.github/workflows/auto-build-container.yml'
   schedule:
-  # cron job to trigger the build daily
-  # at 3am on Friday
-    - cron:  '0 3 * * 5'
+  # cron job to trigger the build daily at 3am
+    - cron:  '0 3 * * *'
 
 env:
   REGISTRY: ghcr.io
