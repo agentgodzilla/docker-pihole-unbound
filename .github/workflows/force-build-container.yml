@@ -1,9 +1,13 @@
 ---
-name: Build and publish container
+name: Force build and publish container
 
 on:
   workflow_dispatch:
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  
 permissions:
   contents: write
 
