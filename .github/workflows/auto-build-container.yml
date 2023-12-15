@@ -34,10 +34,10 @@ jobs:
       run: echo release=$(curl --silent "https://api.github.com/repos/pi-hole/docker-pi-hole/releases/latest" | jq -r '.tag_name') >> $GITHUB_OUTPUT
     
     - name: Get lowercase repo name
-        id: get_lowercase_repo_name
-        run: |
-          REPO_NAME=${{ env.IMAGE_NAME }} 
-          echo "LOWER_CASE_REPO_NAME=${REPO_NAME,,}" >> $GITHUB_ENV
+      id: get_lowercase_repo_name
+      run: |
+        REPO_NAME=${{ env.IMAGE_NAME }} 
+        echo "LOWER_CASE_REPO_NAME=${REPO_NAME,,}" >> $GITHUB_ENV
       
     - name: Get previous release tag
       id: previous_release
@@ -56,10 +56,10 @@ jobs:
       if: ${{ steps.latest_release.outputs.release != steps.previous_release.outputs.release }}
 
     - name: Log in to the Container registry
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       if: ${{ steps.latest_release.outputs.release != steps.previous_release.outputs.release }}
       
