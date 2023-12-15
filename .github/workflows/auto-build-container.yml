@@ -20,7 +20,8 @@ env:
   
 permissions:
   contents: write
-
+  packages: write
+  
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -49,7 +50,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         repository: "${{ env.REGISTRY }}/${{ env.LOWER_CASE_REPO_NAME }}"
         type: "stable"
-      run: echo release=$(curl --silent "https://api.github.com/repos/aleksanderbl29/docker-pihole-unbound/releases/latest" | jq -r '.tag_name' ) >> $GITHUB_OUTPUT
+      run: echo release=$(curl --silent "https://api.github.com/repos/milkers69/docker-pihole-unbound/releases/latest" | jq -r '.tag_name' ) >> $GITHUB_OUTPUT
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
