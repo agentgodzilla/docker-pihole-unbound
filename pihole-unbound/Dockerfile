@@ -1,6 +1,6 @@
-ARG VERSION
+ARG PIHOLE_VERSION
 
-FROM pihole/pihole:$VERSION
+FROM pihole/pihole:$PIHOLE_VERSION
 RUN echo "deb http://deb.debian.org/debian bullseye-backports main" >> /etc/apt/sources.list
 RUN apt update && apt -t bullseye-backports install -y unbound
 
